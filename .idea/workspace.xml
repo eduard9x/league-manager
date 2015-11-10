@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a3417ed-7b91-4be9-b327-d07c293bb15d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/myPackage/FootballClub.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/myPackage/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/myPackage/SportsClub.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/league-manager/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/FootballClub.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SportsClub.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/LeagueManager.java" afterPath="$PROJECT_DIR$/src/myPackage/LeagueManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/PremierLeagueManager.java" afterPath="$PROJECT_DIR$/src/myPackage/PremierLeagueManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="4a3417ed-7b91-4be9-b327-d07c293bb15d" name="Default" comment="" />
     <ignored path="league-manager.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -505,12 +494,12 @@
       <workItem from="1447193685195" duration="50000" />
       <workItem from="1447194415900" duration="3000" />
       <workItem from="1447195129419" duration="106000" />
-      <workItem from="1447195523143" duration="2000000" />
+      <workItem from="1447195523143" duration="2084000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19258000" />
+    <option name="totallyTimeSpent" value="19342000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
