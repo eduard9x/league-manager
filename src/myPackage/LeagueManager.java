@@ -1,3 +1,5 @@
+package myPackage;
+
 interface LeagueManager {
 
     void CreateClub(String ClubName);

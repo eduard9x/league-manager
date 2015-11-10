@@ -1,3 +1,5 @@
+package myPackage;
+
 class PremierLeagueManager implements LeagueManager{
 
     PremierLeagueManager(String n){
