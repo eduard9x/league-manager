@@ -65,112 +65,107 @@ class FotballClub extends SportsClub {
     }
 
 
-    public void statistics(String headVSstats, int biggestName) {
+    public void statistics(String headVSstats, int biggestName) { // 17
 
         String[] firstLine = {"Name", "Matches played", "Wins", "Draws", "Defeats", "Goals received", "Goals scored", "Points"};
         String[] secondLine = new String[STATS];
-        int i = 0, difference;
+        int i = 0, difference, bigger;
 
-        // Name
-        if (biggestName > name.length() && biggestName > firstLine[i].length())
-            difference = name.length() - biggestName;
-        else
-            difference = name.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + name + " ";
-        } else {
-            firstLine[i] =  addLeft(-difference) + "  " + firstLine[i] + "   " + addRight(-difference);
-            secondLine[i] = addLeft(-difference) + name + addRight(-difference);
-        }
+
+        // start Name
+        if (biggestName > firstLine[i].length()) bigger = biggestName;
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - name.length()) + name + addRight(bigger - name.length());
         i++;
+        // end Name
 
-
-        // Matches played
+        // start Matches played
         String matchesPlayed = Integer.toString(this.matchesPlayed);
-        difference = matchesPlayed.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + matchesPlayed + " ";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(-difference) + matchesPlayed + addRight(-difference);
-        }
-        i++;
 
-        // Wins
+        if (matchesPlayed.length() > firstLine[i].length()) bigger = matchesPlayed.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - matchesPlayed.length()) + matchesPlayed + addRight(bigger - matchesPlayed.length());
+        i++;
+        // end Matches played
+
+
+        // start Wins
         String wins = Integer.toString(this.wins);
-        difference = wins.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + wins + " ";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(-difference) + wins + addRight(-difference);
-        }
-        i++;
 
-        // Draws
+        if (wins.length() > firstLine[i].length()) bigger = wins.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - wins.length()) + wins + addRight(bigger - wins.length());
+        i++;
+        // end Wins
+
+
+        // start Draws
         String draws = Integer.toString(this.draws);
-        difference = draws.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + draws + " ";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(-difference) + draws + addRight(-difference);
-        }
+
+        if (draws.length() > firstLine[i].length()) bigger = draws.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - draws.length()) + draws + addRight(bigger - draws.length());
         i++;
+        // end Draws
 
-        // Defeats
-        String defeats = Integer.toString(this.defeats);
-        difference = defeats.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + defeats + " ";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(-difference) + defeats + addRight(-difference);
-        }
+
+        // start Defeats
+        String defeats = Integer.toString(this.draws);
+
+        if (defeats.length() > firstLine[i].length()) bigger = defeats.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - defeats.length()) + defeats + addRight(bigger - defeats.length());
         i++;
+        // end Defeats
 
-        // Goals Recieved
-        String goalsReceived = Integer.toString(this.goalsReceived);
-        difference = goalsReceived.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + goalsReceived + " ";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(-difference) + goalsReceived + addRight(-difference);
-        }
+
+        // start Goals Recieved
+        String goalsReceived = Integer.toString(this.draws);
+
+        if (goalsReceived.length() > firstLine[i].length()) bigger = goalsReceived.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - goalsReceived.length()) + goalsReceived + addRight(bigger - goalsReceived.length());
         i++;
+        // end Goals Recieved
 
-        // Goals Scored
-        String goalsScored = Integer.toString(this.goalsScored);
-        difference = goalsScored.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
-            secondLine[i] = "| " + goalsScored + " ";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(-difference) + goalsScored + addRight(-difference);
-        }
+
+        // start Goals Scored
+        String goalsScored = Integer.toString(this.draws);
+
+        if (goalsScored.length() > firstLine[i].length()) bigger = goalsScored.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
+        secondLine[i] = addLeft(bigger - goalsScored.length()) + goalsScored + addRight(bigger - goalsScored.length());
         i++;
-
-        // Points
-        String points = Integer.toString(this.points);
-        difference = points.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (difference > 0) {
-            firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference) + "|";
-            secondLine[i] = "| " + points + " |";
-        } else {
-            firstLine[i] = "| " + firstLine[i] + " |";
-            secondLine[i] = addLeft(-difference) + points + addRight(-difference) + "|";
-        }
+        // end Goals Scored
 
 
-        if (headVSstats == "head") {
+        // start Points
+        String points = Integer.toString(this.draws);
+
+        if (points.length() > firstLine[i].length()) bigger = points.length();
+        else bigger = firstLine[i].length();
+
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length()) + "|";
+        secondLine[i] = addLeft(bigger - points.length()) + points + addRight(bigger - points.length()) + "|";
+        i++;
+        // end Points
+
+
+        if (headVSstats == "head") { // sometimes I want to print the head of the table
             for (i = 0; i < STATS; i++) {
                 System.out.print(firstLine[i]);
             }
@@ -178,7 +173,7 @@ class FotballClub extends SportsClub {
             System.out.println("");
         }
 
-        if (headVSstats == "stats") {
+        if (headVSstats == "stats") { // sometimes I want to print the statistics of the team
             for (i = 0; i < STATS; i++) {
                 System.out.print(secondLine[i]);
             }
@@ -193,8 +188,8 @@ class FotballClub extends SportsClub {
             for (int i = 0; i < difference / 2; i++)
                 space = space + " "; // 3
         else //odd number eg. 7
-            for (int i = 0; i < difference / 2; i++)
-                space = space + " "; //3
+            for (int i = 0; i < difference / 2; i++) //3
+                space = space + " ";
 
         return space;
     }
@@ -205,8 +200,8 @@ class FotballClub extends SportsClub {
             for (int i = 0; i < difference / 2; i++)
                 space = space + " "; // 3
         else //odd number eg. 7
-            for (int i = 0; i <= difference / 2; i++)
-                space = space + " "; //4
+            for (int i = 0; i <= difference / 2; i++) //4
+                space = space + " ";
 
         return space;
     }

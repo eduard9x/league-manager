@@ -24,13 +24,17 @@ public class Main {
         MyLeague.CreateClub("Chelsea");
         MyLeague.CreateClub("Arsenal");
         MyLeague.CreateClub("Everton");
-        MyLeague.CreateClub("Manchester United");
+        MyLeague.CreateClub("Manchester City");
 
 
 //        FotballClub EdwardPool = new FotballClub("EdwardPool");
 //        EdwardPool.statistics();
 
         MyLeague.stats();
+
+
+        // todo create menu
+        //todo create find function
 
 
     }
