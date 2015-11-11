@@ -42,7 +42,7 @@ class FotballClub extends SportsClub {
 
 
         Iterator it = stats.iterator();
-        while(it.hasNext())
+        while (it.hasNext())
             System.out.print(it.next());
 
         String x = (String) stats.get(0);
@@ -57,7 +57,7 @@ class FotballClub extends SportsClub {
         listTest.add(0);
 
         Iterator it = listTest.iterator();
-        while(it.hasNext())
+        while (it.hasNext())
             System.out.println(it.next());
 
         System.out.println(listTest.get(0));
@@ -65,20 +65,23 @@ class FotballClub extends SportsClub {
     }
 
 
-    public void statistics() {
+    public void statistics(String headVSstats, int biggestName) {
 
         String[] firstLine = {"Name", "Matches played", "Wins", "Draws", "Defeats", "Goals received", "Goals scored", "Points"};
         String[] secondLine = new String[STATS];
-        int i = 0;
+        int i = 0, difference;
 
         // Name
-        int difference = name.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (name.length() > firstLine[i].length()) {
+        if (biggestName > name.length() && biggestName > firstLine[i].length())
+            difference = name.length() - biggestName;
+        else
+            difference = name.length() - firstLine[i].length(); //I use the difference between strings to center the text
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + name + " ";
         } else {
-            firstLine[i] = "| " + firstLine[i] + " ";
-            secondLine[i] = addLeft(difference) + name + addRight(difference);
+            firstLine[i] =  addLeft(-difference) + "  " + firstLine[i] + "   " + addRight(-difference);
+            secondLine[i] = addLeft(-difference) + name + addRight(-difference);
         }
         i++;
 
@@ -86,7 +89,7 @@ class FotballClub extends SportsClub {
         // Matches played
         String matchesPlayed = Integer.toString(this.matchesPlayed);
         difference = matchesPlayed.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (matchesPlayed.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + matchesPlayed + " ";
         } else {
@@ -98,7 +101,7 @@ class FotballClub extends SportsClub {
         // Wins
         String wins = Integer.toString(this.wins);
         difference = wins.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (wins.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + wins + " ";
         } else {
@@ -110,7 +113,7 @@ class FotballClub extends SportsClub {
         // Draws
         String draws = Integer.toString(this.draws);
         difference = draws.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (draws.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + draws + " ";
         } else {
@@ -122,7 +125,7 @@ class FotballClub extends SportsClub {
         // Defeats
         String defeats = Integer.toString(this.defeats);
         difference = defeats.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (defeats.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + defeats + " ";
         } else {
@@ -134,7 +137,7 @@ class FotballClub extends SportsClub {
         // Goals Recieved
         String goalsReceived = Integer.toString(this.goalsReceived);
         difference = goalsReceived.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (goalsReceived.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + goalsReceived + " ";
         } else {
@@ -146,7 +149,7 @@ class FotballClub extends SportsClub {
         // Goals Scored
         String goalsScored = Integer.toString(this.goalsScored);
         difference = goalsScored.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (goalsScored.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference);
             secondLine[i] = "| " + goalsScored + " ";
         } else {
@@ -158,7 +161,7 @@ class FotballClub extends SportsClub {
         // Points
         String points = Integer.toString(this.points);
         difference = points.length() - firstLine[i].length(); //I use the difference between strings to center the text
-        if (points.length() > firstLine[i].length()) {
+        if (difference > 0) {
             firstLine[i] = addLeft(difference) + firstLine[i] + addRight(difference) + "|";
             secondLine[i] = "| " + points + " |";
         } else {
@@ -167,19 +170,20 @@ class FotballClub extends SportsClub {
         }
 
 
-
+        if (headVSstats == "head") {
             for (i = 0; i < STATS; i++) {
                 System.out.print(firstLine[i]);
             }
 
             System.out.println("");
-
-
-        for (i = 0; i < STATS; i++) {
-            System.out.print(secondLine[i]);
         }
-        System.out.println("");
 
+        if (headVSstats == "stats") {
+            for (i = 0; i < STATS; i++) {
+                System.out.print(secondLine[i]);
+            }
+            System.out.println("");
+        }
     }
 
 
@@ -205,6 +209,10 @@ class FotballClub extends SportsClub {
                 space = space + " "; //4
 
         return space;
+    }
+
+    public String getName() {
+        return name;
     }
 
 
