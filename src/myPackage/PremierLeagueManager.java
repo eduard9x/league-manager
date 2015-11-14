@@ -8,13 +8,16 @@ class PremierLeagueManager implements LeagueManager {
 
     }
 
-    ArrayList stats = new ArrayList();
+    ArrayList<FotballClub> stats = new ArrayList();
     FotballClub MyClub;
 
     public void CreateClub(String name) {
 
+
         MyClub = new FotballClub(name);
         stats.add(MyClub);
+
+//        stats.get(0).variousStatistics();
 
     }
 
@@ -25,12 +28,13 @@ class PremierLeagueManager implements LeagueManager {
     public void stats() {
 
         boolean first = false;
-        String compare1="", compare2="";
+        String compare1 = "", compare2 = "";
         FotballClub MySadClub;
         int i;
 
+        //this will find the longest club name
         for (i = 0; i < stats.size(); i++) {
-            MySadClub = (FotballClub) stats.get(i);
+            MySadClub = stats.get(i);
 
             if (first == false) { // add the first name in this variable
                 compare1 = MySadClub.getName();
@@ -39,20 +43,23 @@ class PremierLeagueManager implements LeagueManager {
                 compare2 = MySadClub.getName();
                 if (compare1.length() < compare2.length()) compare1 = compare2;
             }
-
         }
 
+        //this will create my Premier League table
         first = false;
         for (i = 0; i < stats.size(); i++) {
-            MySadClub = (FotballClub) stats.get(i);
+            MySadClub =  stats.get(i);
             if (first == false) {
                 first = true;
                 MySadClub.statistics("head", compare1.length());
             }
             MySadClub.statistics("stats", compare1.length());
         }
-
-
     }
+
+
+
+
+
 
 }

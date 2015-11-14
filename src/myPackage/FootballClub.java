@@ -1,22 +1,71 @@
 package myPackage;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-
 class FotballClub extends SportsClub {
 
-    //todo sould show statistics; wins, loss, draws, goals recive/scored,
-    //todo number of points club has
-    //todo number of matches played
-    //locaions
+    private int wins, defeats, draws, goalsReceived, goalsScored, points, matchesPlayed;
 
-    String name;
-    int wins, defeats, draws, goalsReceived, goalsScored, points, matchesPlayed;
-    private final int STATS;  // This is the number of attributes
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getDefeats() {
+        return defeats;
+    }
+
+    public void setDefeats(int defeats) {
+        this.defeats = defeats;
+    }
+
+    public int getMatchesPlayed() {
+        return matchesPlayed;
+    }
+
+    public void setMatchesPlayed(int matchesPlayed) {
+        this.matchesPlayed = matchesPlayed;
+    }
+
+    public int getPoints() {
+
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getGoalsScored() {
+
+        return goalsScored;
+    }
+
+    public void setGoalsScored(int goalsScored) {
+        this.goalsScored = goalsScored;
+    }
+
+    public int getGoalsReceived() {
+
+        return goalsReceived;
+    }
+
+    public void setGoalsReceived(int goalsReceived) {
+        this.goalsReceived = goalsReceived;
+    }
+
+    public int getDraws() {
+
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
 
     FotballClub(String name) {
-        this.name = name;
+        super(name);
         matchesPlayed = 0;
         wins = 0;
         draws = 0;
@@ -24,65 +73,28 @@ class FotballClub extends SportsClub {
         goalsReceived = 0;
         goalsScored = 0;
         points = 0;
-        STATS = 8;
-    }
-
-
-    public void statistics2() {
-        ArrayList stats = new ArrayList();
-
-        stats.add("Name");
-        stats.add("Matches played");
-        stats.add("Wins");
-        stats.add("Draws");
-        stats.add("Defeats");
-        stats.add("Goals received");
-        stats.add("Goals scored");
-        stats.add("Points");
-
-
-        Iterator it = stats.iterator();
-        while (it.hasNext())
-            System.out.print(it.next());
-
-        String x = (String) stats.get(0);
-        System.out.println(x.length());
-
-    }
-
-    public void statistics3() {
-
-        ArrayList listTest = new ArrayList();
-        listTest.add("Name");
-        listTest.add(0);
-
-        Iterator it = listTest.iterator();
-        while (it.hasNext())
-            System.out.println(it.next());
-
-        System.out.println(listTest.get(0));
-
     }
 
 
     public void statistics(String headVSstats, int biggestName) { // 17
 
+        final int STATS = 8;  // This is the number of attributes I want to show in the statistics()
+
         String[] firstLine = {"Name", "Matches played", "Wins", "Draws", "Defeats", "Goals received", "Goals scored", "Points"};
         String[] secondLine = new String[STATS];
         int i = 0, difference, bigger;
 
-
-        // start Name
+        // start Name -- getting it from the SportsClub
         if (biggestName > firstLine[i].length()) bigger = biggestName;
         else bigger = firstLine[i].length();
 
         firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
-        secondLine[i] = addLeft(bigger - name.length()) + name + addRight(bigger - name.length());
+        secondLine[i] = addLeft(bigger - this.getName().length()) + this.getName() + addRight(bigger - this.getName().length());
         i++;
         // end Name
 
         // start Matches played
-        String matchesPlayed = Integer.toString(this.matchesPlayed);
+        String matchesPlayed = Integer.toString(this.getMatchesPlayed());
 
         if (matchesPlayed.length() > firstLine[i].length()) bigger = matchesPlayed.length();
         else bigger = firstLine[i].length();
@@ -94,7 +106,7 @@ class FotballClub extends SportsClub {
 
 
         // start Wins
-        String wins = Integer.toString(this.wins);
+        String wins = Integer.toString(this.getWins());
 
         if (wins.length() > firstLine[i].length()) bigger = wins.length();
         else bigger = firstLine[i].length();
@@ -106,7 +118,7 @@ class FotballClub extends SportsClub {
 
 
         // start Draws
-        String draws = Integer.toString(this.draws);
+        String draws = Integer.toString(this.getDraws());
 
         if (draws.length() > firstLine[i].length()) bigger = draws.length();
         else bigger = firstLine[i].length();
@@ -118,7 +130,7 @@ class FotballClub extends SportsClub {
 
 
         // start Defeats
-        String defeats = Integer.toString(this.draws);
+        String defeats = Integer.toString(this.getDefeats());
 
         if (defeats.length() > firstLine[i].length()) bigger = defeats.length();
         else bigger = firstLine[i].length();
@@ -130,7 +142,7 @@ class FotballClub extends SportsClub {
 
 
         // start Goals Recieved
-        String goalsReceived = Integer.toString(this.draws);
+        String goalsReceived = Integer.toString(this.getGoalsReceived());
 
         if (goalsReceived.length() > firstLine[i].length()) bigger = goalsReceived.length();
         else bigger = firstLine[i].length();
@@ -142,7 +154,7 @@ class FotballClub extends SportsClub {
 
 
         // start Goals Scored
-        String goalsScored = Integer.toString(this.draws);
+        String goalsScored = Integer.toString(this.getGoalsScored());
 
         if (goalsScored.length() > firstLine[i].length()) bigger = goalsScored.length();
         else bigger = firstLine[i].length();
@@ -154,13 +166,13 @@ class FotballClub extends SportsClub {
 
 
         // start Points
-        String points = Integer.toString(this.draws);
+        String points = Integer.toString(this.getPoints());
 
         if (points.length() > firstLine[i].length()) bigger = points.length();
         else bigger = firstLine[i].length();
 
-        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length()) + "|";
-        secondLine[i] = addLeft(bigger - points.length()) + points + addRight(bigger - points.length()) + "|";
+        firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length()) + "|"; //all as usual + a border to close the table
+        secondLine[i] = addLeft(bigger - points.length()) + points + addRight(bigger - points.length()) + "|"; //all as usual + a border to close the table
         i++;
         // end Points
 
@@ -183,7 +195,7 @@ class FotballClub extends SportsClub {
 
 
     public String addLeft(int difference) { //I use the difference between strings to center the text
-        String space = "| "; // I want to start with a border
+        String space = "| "; // I want to start with a border and a space
         if (difference % 2 == 0) // even number eg. 6
             for (int i = 0; i < difference / 2; i++)
                 space = space + " "; // 3
@@ -205,10 +217,5 @@ class FotballClub extends SportsClub {
 
         return space;
     }
-
-    public String getName() {
-        return name;
-    }
-
 
 }
