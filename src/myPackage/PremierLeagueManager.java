@@ -4,62 +4,48 @@ import java.util.ArrayList;
 
 class PremierLeagueManager implements LeagueManager {
 
-    PremierLeagueManager(String n) {
+    PremierLeagueManager() {
 
     }
 
     ArrayList<FotballClub> stats = new ArrayList();
     FotballClub MyClub;
 
-    public void CreateClub(String name) {
 
+
+    public void CreateClub(String name) {
 
         MyClub = new FotballClub(name);
         stats.add(MyClub);
-
 //        stats.get(0).variousStatistics();
-
+//        stats.get(0).setDraws(12356789);
     }
+
 
     public void DeleteClub(String name) {
-
     }
+
+//todo research if it's useful to add the table in the attributes
+//todo make a method that adds the first row of the table in the actual attributes
+// todo after that, this method might work
+//todo you can do a method with 8 arguments or with a string[8] or even more for location and various statistics in the constructor
+
 
     public void stats() {
 
-        boolean first = false;
-        String compare1 = "", compare2 = "";
-        FotballClub MySadClub;
         int i;
+        int[] biggestField = {stats.get(0).getName().length(), stats.get(0).getMatchesPlayed().length(), stats.get(0).getWins().length(), stats.get(0).getDraws().length(), stats.get(0).getDefeats().length(), stats.get(0).getGoalsReceived().length(), stats.get(0).getGoalsScored().length(), stats.get(0).getPoints().length()};
 
-        //this will find the longest club name
-        for (i = 0; i < stats.size(); i++) {
-            MySadClub = stats.get(i);
-
-            if (first == false) { // add the first name in this variable
-                compare1 = MySadClub.getName();
-                first = true;
-            } else { // we already added the first one and i>0
-                compare2 = MySadClub.getName();
-                if (compare1.length() < compare2.length()) compare1 = compare2;
-            }
+        for( i=1;i< stats.size();i++)
+        for(int j=0;j< biggestField.length;j++) {
+            int[] test2 = {stats.get(i).getName().length(), stats.get(i).getMatchesPlayed().length(), stats.get(i).getWins().length(), stats.get(i).getDraws().length(), stats.get(i).getDefeats().length(), stats.get(i).getGoalsReceived().length(), stats.get(i).getGoalsScored().length(), stats.get(i).getPoints().length()};
+            if(biggestField[j] < test2[j]) biggestField[j] = test2[j];
         }
 
         //this will create my Premier League table
-        first = false;
-        for (i = 0; i < stats.size(); i++) {
-            MySadClub =  stats.get(i);
-            if (first == false) {
-                first = true;
-                MySadClub.statistics("head", compare1.length());
-            }
-            MySadClub.statistics("stats", compare1.length());
-        }
+
+        for (i = 0; i < stats.size(); i++)
+            stats.get(i).statistics(biggestField);
     }
-
-
-
-
-
 
 }

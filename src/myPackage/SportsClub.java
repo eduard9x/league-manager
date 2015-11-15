@@ -2,7 +2,7 @@ package myPackage;
 
 abstract class SportsClub {
 
-    public abstract void statistics(String headVSstats, int biggestName);
+    public abstract void statistics( int[] biggestField);
 
     private String name, location, awards, capital, worldWidePosition;
 
