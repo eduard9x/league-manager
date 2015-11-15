@@ -63,7 +63,6 @@ class FotballClub extends SportsClub {
         this.draws = draws;
     }
 
-
     FotballClub(String name) {
 
         super(name); // use the constructor in SportsClub
@@ -89,7 +88,6 @@ class FotballClub extends SportsClub {
 
     }
 
-//todo make biggest name an array that holds the longest words in each column
     public void statistics(int[] biggestField) { // 17
 
         String[] firstLine = {"Name", "Matches played", "Wins", "Draws", "Defeats", "Goals received", "Goals scored", "Points"};
@@ -113,7 +111,6 @@ class FotballClub extends SportsClub {
         }
         System.out.print("|\n");
     }
-
 
     public String addLeft(int difference) { //I use the difference between strings to center the text
         String space = "| "; // I want to start with a border and a space

@@ -23,7 +23,6 @@ abstract class SportsClub {
         System.out.println();
     }
 
-
     public String getName() {
         return name;
     }
@@ -63,6 +62,5 @@ abstract class SportsClub {
     public void setWorldWidePosition(String worldWidePosition) {
         this.worldWidePosition = worldWidePosition;
     }
-
 
 }
