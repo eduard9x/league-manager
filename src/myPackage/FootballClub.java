@@ -2,38 +2,42 @@ package myPackage;
 
 class FotballClub extends SportsClub {
 
-    private String wins, defeats, draws, goalsReceived, goalsScored, points, matchesPlayed;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+
+    private String wins, defeats, draws, goalsReceived, goalsScored, points, matchesPlayed, colour;
 
     public String getWins() {
         return wins;
     }
 
-    public void setWins(String wins) {
-        this.wins = wins;
+    public void setWins(int wins) {
+        this.wins = Integer.toString(Integer.parseInt(this.wins) + wins);
     }
 
     public String getDefeats() {
         return defeats;
     }
 
-    public void setDefeats(String defeats) {
-        this.defeats = defeats;
+    public void setDefeats(int defeats) {
+        this.defeats = Integer.toString(Integer.parseInt(this.defeats) + defeats);
     }
 
     public String getMatchesPlayed() {
         return matchesPlayed;
     }
 
-    public void setMatchesPlayed(String matchesPlayed) {
-        this.matchesPlayed = matchesPlayed;
+    public void setMatchesPlayed(int matchesPlayed) {
+        this.matchesPlayed = Integer.toString(Integer.parseInt(this.matchesPlayed) + matchesPlayed);
     }
 
     public String getPoints() {
         return points;
     }
 
-    public void setPoints(String points) {
-        this.points = points;
+    public void setPoints(int points) {
+        this.points = Integer.toString(Integer.parseInt(this.points) + points);
     }
 
     public String getGoalsScored() {
@@ -41,17 +45,16 @@ class FotballClub extends SportsClub {
         return goalsScored;
     }
 
-    public void setGoalsScored(String goalsScored) {
-        this.goalsScored = goalsScored;
+    public void setGoalsScored(int goalsScored) {
+        this.goalsScored = Integer.toString(Integer.parseInt(this.goalsScored) + goalsScored);
     }
 
     public String getGoalsReceived() {
-
         return goalsReceived;
     }
 
-    public void setGoalsReceived(String goalsReceived) {
-        this.goalsReceived = goalsReceived;
+    public void setGoalsReceived(int goalsReceived) {
+        this.goalsReceived = Integer.toString(Integer.parseInt(this.goalsReceived) + goalsReceived);
     }
 
     public String getDraws() {
@@ -59,8 +62,8 @@ class FotballClub extends SportsClub {
         return draws;
     }
 
-    public void setDraws(String draws) {
-        this.draws = draws;
+    public void setDraws(int draws) {
+        this.draws = Integer.toString(Integer.parseInt(this.draws) + draws);
     }
 
     FotballClub(String name) {
@@ -75,41 +78,37 @@ class FotballClub extends SportsClub {
             goalsReceived = "Goals received";
             goalsScored = "Goals scored";
             points = "Points";
+            colour = ANSI_BLUE;
         }
         else {
-            matchesPlayed = "1";
-            wins = "2";
-            draws = "3";
-            defeats = "4";
-            goalsReceived = "5";
-            goalsScored = "6";
-            points = "7";
+            matchesPlayed = "0";
+            wins = "0";
+            draws = "0";
+            defeats = "0";
+            goalsReceived = "0";
+            goalsScored = "0";
+            points = "0";
+            colour=ANSI_BLACK;
         }
 
     }
 
     public void statistics(int[] biggestField) { // 17
 
-        String[] firstLine = {"Name", "Matches played", "Wins", "Draws", "Defeats", "Goals received", "Goals scored", "Points"};
         String[] secondLine = {getName(), matchesPlayed, wins, draws, defeats, goalsReceived, goalsScored, points};
         int i, bigger;
 
-        for (i = 0; i < firstLine.length; i++) {
-            //todo create a function that compares every cell on columns and returns the largest
-            //todo use that function to make the table responsive
+        for (i = 0; i < secondLine.length; i++) {
+            if (biggestField[i] > secondLine[i].length()) bigger = biggestField[i];
+            else bigger = secondLine[i].length();
 
-            if (biggestField[i] > firstLine[i].length()) bigger = biggestField[i];
-            else if (secondLine[i].length() > firstLine[i].length()) bigger = secondLine[i].length();
-            else bigger = firstLine[i].length();
-
-            firstLine[i] = addLeft(bigger - firstLine[i].length()) + firstLine[i] + addRight(bigger - firstLine[i].length());
             secondLine[i] = addLeft(bigger - secondLine[i].length()) + secondLine[i] + addRight(bigger - secondLine[i].length());
         }
 
-        for (i = 0; i < firstLine.length; i++) {
-            System.out.print(secondLine[i]);
+        for (i = 0; i < secondLine.length; i++) {
+            System.out.print(this.colour+ secondLine[i] + ANSI_RESET);
         }
-        System.out.print("|\n");
+        System.out.print(this.colour+ "|\n" + ANSI_RESET);
     }
 
     public String addLeft(int difference) { //I use the difference between strings to center the text
