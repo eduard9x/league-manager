@@ -27,10 +27,10 @@ public class Main {
 //        MyLeague.doMatches();
 //        System.out.println();
 
-MyLeague.doSort();
+//        MyLeague.doSort();
 
         MyLeague.stats();
-        // todo create menu
+        //todo create menu
     }
 
 

@@ -56,11 +56,10 @@ class PremierLeagueManager implements LeagueManager {
     public void calendar() {
 
         int year = 2015;
-        int month = 9; // months 0-11 --> Jan-Dec
-        String colour = ANSI_BLUE;
+        int month = 10; // months 0-11 --> Jan-Dec
+        int selectedDay = 13;
+        String colour;
         //todo add validation to this and to whatever else you input from keyboard
-        //todo if date is in the past, then colour is red
-        //todo if the present month is selected, colour everything blue until the present day, present day is green and future days red
 
         int dayOfWeek, i;
 
@@ -74,6 +73,10 @@ class PremierLeagueManager implements LeagueManager {
 
         dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK); //find the name of that day -- will return 1 for Sunday
 
+        //the use of colours
+        System.out.println("Use of colours:\n  >> Past day - " + ANSI_BLUE + "blue" + ANSI_RESET + "\n  >> Future day - " + ANSI_PURPLE + "purple" + ANSI_RESET + " \n");
+
+        //printing the selected month and year
         System.out.println("    " + months[month] + "  " + year);
 
         //printing head of calendar
@@ -85,14 +88,23 @@ class PremierLeagueManager implements LeagueManager {
         for (i = 1; i < dayOfWeek; i++)
             System.out.print("    ");
 
+        //get the present date
+        myCalendar.clear();
+        int thisYear = myCalendar.getInstance().get(myCalendar.YEAR);
+        int thisMonth = myCalendar.getInstance().get(myCalendar.MONTH);
+        int thisDay = myCalendar.getInstance().get(myCalendar.DAY_OF_MONTH);
+//        System.out.println( "\n" + thisDay + "-" + months[thisMonth] + "-" + thisYear);
+
         //start printing days of the month
         for (i = 0; i < monthsLength[month]; i++) { //I used that 9 - to addi an extra space for digits less than 10
-            if (i < 9) System.out.print(colour + (i + 1) + "   " + ANSI_RESET); //will have blue colour for past and red for future
-            else System.out.print( colour + (i + 1) + "  " + ANSI_RESET);
+            if ((year < thisYear) || (year == thisYear && month < thisMonth) || (year == thisYear && month == thisMonth && i < thisDay)) colour = ANSI_BLUE; //past day
+            else colour = ANSI_PURPLE; //future day
+
+            if (i < 9)
+                System.out.print(colour + (i + 1) + "   " + ANSI_RESET); //will have blue colour for past and red for future
+            else System.out.print(colour + (i + 1) + "  " + ANSI_RESET);
             if ((i + dayOfWeek) % 7 == 0) System.out.println();
         }
-
-
     }
 
     public int find(String name) {
@@ -151,12 +163,9 @@ class PremierLeagueManager implements LeagueManager {
             }
     }
 
-    public void doSort(){
+    public void doSort() {
 
-        int statsSorting=1,highestPosition,aux;
-//todo sort the problem out. It might get the points and try to save them as an integer. that should be the error :)
-
-
+        int statsSorting = 1, highestPosition, aux;
 
 //        this is for testing purposes ONLY
 //        for(int j=1;j<stats.size();j++) {
@@ -164,9 +173,7 @@ class PremierLeagueManager implements LeagueManager {
 //            stats.get(j).setGoalsScored(j);
 //        }
 
-        stats.get(5).setPoints(1);
-
-        if(Integer.parseInt(stats.get(highestPoints(statsSorting)).getPoints())!=0) {
+        if (Integer.parseInt(stats.get(highestPoints(statsSorting)).getPoints()) != 0) {
 
             while (statsSorting < stats.size()) {
                 highestPosition = highestPoints(statsSorting);
@@ -200,12 +207,12 @@ class PremierLeagueManager implements LeagueManager {
     }
 
     public int highestPoints(int aux) {
-        int maxPoints = -1, maxPosition=1;
+        int maxPoints = -1, maxPosition = 1;
         // the max position will be the first team by default
         // and the max points will be an impossible value
 
-        for(int i = aux;i<stats.size();i++){
-            for(int j=i;j<stats.size();j++){
+        for (int i = aux; i < stats.size(); i++) {
+            for (int j = i; j < stats.size(); j++) {
                 if (stats.size() > j) {//todo this seems pointless - please check
                     if (Integer.parseInt(stats.get(j).getPoints()) > maxPoints) {
                         maxPosition = j;
