@@ -93,7 +93,7 @@ class FotballClub extends SportsClub {
 
     }
 
-    public void statistics(int[] biggestField) { // 17
+    public void statistics(int[] biggestField) {
 
         String[] secondLine = {getName(), matchesPlayed, wins, draws, defeats, goalsReceived, goalsScored, points};
         int i, bigger;

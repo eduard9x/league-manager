@@ -1,5 +1,7 @@
 package myPackage;
 
+import java.util.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,17 +22,32 @@ public class Main {
         //todo test everything with no clubs added
 
 
-//        MyLeague.stats();
+//        MyLeague.stats(-1);
 //        MyLeague.calendar();
-//        MyLeague.DeleteClub("Space");
+//        MyLeague.DeleteClub("Real Madrid");
 
-//        MyLeague.doMatches();
+        MyLeague.doMatches();
 //        System.out.println();
 
 //        MyLeague.doSort();
+//        MyLeague.stats(-1); //-1 for showing all the premier league
 
-        MyLeague.stats();
+//        MyLeague.calendar();
+
+//        MyLeague.stats(MyLeague.find("Liverpool"));
+
+//        MyLeague.addMatch("Liverpool","Chelsea","13 November 2015");
+//        MyLeague.addMatch("Liverpool","Chelsea","13 November 2015");
+
+
+//        MyLeague.doSort();
+
+//        MyLeague.stats(-1);
         //todo create menu
+
+
+        MyLeague.printMatchCalendar();
+
     }
 
 
