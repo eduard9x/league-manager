@@ -36,8 +36,8 @@ public class Main {
 
 //        MyLeague.stats(MyLeague.find("Liverpool"));
 
-//        MyLeague.addMatch("Liverpool","Chelsea","13 November 2015");
-//        MyLeague.addMatch("Liverpool","Chelsea","13 November 2015");
+//        MyLeague.addMatch("Liverpool","Chelsea");
+//        MyLeague.addMatch("Real Madrid","Arsenal");
 
 
 //        MyLeague.doSort();
@@ -45,8 +45,8 @@ public class Main {
 //        MyLeague.stats(-1);
         //todo create menu
 
+        MyLeague.doEnd();
 
-        MyLeague.printMatchCalendar();
 
     }
 

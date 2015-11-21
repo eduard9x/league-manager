@@ -18,9 +18,11 @@ class PremierLeagueManager implements LeagueManager {
     public static final String MONTHS[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     public static final int[] MONTHS_LENGTH = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    ArrayList<FotballClub> stats = new ArrayList();
-    ArrayList<calendarOfMatches> matchCalendar = new ArrayList();
+    ArrayList<FotballClub> stats = new ArrayList<FotballClub>();
     FotballClub MyClub;
+
+    ArrayList<String> myStuff = new ArrayList<String>();
+    ArrayList<calendar> myCal = new ArrayList<calendar>();
 
     public void CreateClub(String name) {
         MyClub = new FotballClub(name);
@@ -55,8 +57,8 @@ class PremierLeagueManager implements LeagueManager {
 
         //this will create my Premier League table
         for (i = 0; i < stats.size(); i++)
-            if(i==which || i==0 || which == -1) //only for head of table and the searched team
-            stats.get(i).statistics(biggestField);
+            if (i == which || i == 0 || which == -1) //only for head of table and the searched team
+                stats.get(i).statistics(biggestField);
     }
 
     public void calendar() {
@@ -99,7 +101,8 @@ class PremierLeagueManager implements LeagueManager {
 
         //start printing days of the month
         for (i = 0; i < MONTHS_LENGTH[month]; i++) { //I used that 9 - to addi an extra space for digits less than 10
-            if ((year < thisYear) || (year == thisYear && month < thisMonth) || (year == thisYear && month == thisMonth && i < thisDay)) colour = ANSI_BLUE; //past day
+            if ((year < thisYear) || (year == thisYear && month < thisMonth) || (year == thisYear && month == thisMonth && i < thisDay))
+                colour = ANSI_BLUE; //past day
             else colour = ANSI_PURPLE; //future day
 
             if (i < 9)
@@ -108,9 +111,9 @@ class PremierLeagueManager implements LeagueManager {
             if ((i + dayOfWeek) % 7 == 0) System.out.println();
         }
 
-        for(i=0;i<matchCalendar.size();i++)
-        if(matchCalendar.get(i).getDate().equals(Integer.toString(selectedDay)+" "+MONTHS[month]+" "+Integer.toString(year)))
-            System.out.println("\n" + matchCalendar.get(i).getDate() + ": " + matchCalendar.get(i).getStats());
+//        for (i = 0; i < matchCalendar.size(); i++)
+//            if (matchCalendar.get(i).getDate().equals(Integer.toString(selectedDay) + " " + MONTHS[month] + " " + Integer.toString(year)))
+//                System.out.println("\n" + matchCalendar.get(i).getDate() + ": " + matchCalendar.get(i).getStats());
         //todo change this to a general structure
         //todo see if it should be good to colour every date that has matches instead of a random table like that.
         //todo or maybe green the matches somehow.
@@ -139,31 +142,32 @@ class PremierLeagueManager implements LeagueManager {
         }
 
 //        System.out.println(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
+        myStuff.add(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
+
+        calendar newMatch = new calendar(homeClub, date);
+        myCal.add(newMatch);
 
 
-        //todo add to match calendar
-        calendarOfMatches myListOfMatches = new calendarOfMatches(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
-        myListOfMatches.setDate(date);
-        matchCalendar.add(myListOfMatches);
+        //sort the teams by points and goals scored
+        doSort();
     }
 
     public void addStats(int win, int lose, int scoreWin, int scoreLose) {
 
         //winning part
         stats.get(win).setMatchesPlayed(1);
-        stats.get(win).setWins(1);
         stats.get(win).setGoalsReceived(scoreLose);
         stats.get(win).setGoalsScored(scoreWin);
-        if (scoreWin > scoreLose) stats.get(win).setPoints(3);
-
         //losing part
         stats.get(lose).setMatchesPlayed(1);
-        stats.get(lose).setDefeats(1);
         stats.get(lose).setGoalsReceived(scoreWin);
         stats.get(lose).setGoalsScored(scoreLose);
 
-        //add one point to each for draw
-        if (scoreWin == scoreLose) {
+        if (scoreWin > scoreLose) {
+            stats.get(win).setPoints(3);
+            stats.get(win).setWins(1);
+            stats.get(lose).setDefeats(1);
+        } else { //it's a draw
             stats.get(win).setPoints(1);
             stats.get(win).setDraws(1);
             stats.get(lose).setPoints(1);
@@ -172,35 +176,16 @@ class PremierLeagueManager implements LeagueManager {
     }
 
     public void doMatches() {
-        String date = " November 2015";
-
-        Calendar myCalendar = new GregorianCalendar();
-        int thisYear = myCalendar.getInstance().get(myCalendar.YEAR);
-        int thisMonth = myCalendar.getInstance().get(myCalendar.MONTH);
-        int thisDay = myCalendar.getInstance().get(myCalendar.DAY_OF_MONTH);
-
-        int day=thisDay;
-
-        String[] matchDate = {Integer.toString(thisDay),MONTHS[thisMonth],Integer.toString(thisYear)};
-
-        //todo get today
-        //todo day-j will get negative to bigger numbers.
-        //todo this might need the number of days of each month
-        //todo although this is just for testing
-
-
-//        if(day>0 && day< MONTHS_LENGTH[])
 
 
 
         // every team plays with every team twice
         for (int i = 1; i < stats.size(); i++)
             for (int j = 1; j < stats.size(); j++) {
+                String[] date = {Integer.toString(j),"November","2015"};
+                if (i != j) addMatch(stats.get(i).getName(), stats.get(j).getName(), date);
+                }
 
-
-                if (i != j) addMatch(stats.get(i).getName(), stats.get(j).getName(), matchDate);
-
-            }
     }
 
     public void doSort() {
@@ -264,16 +249,14 @@ class PremierLeagueManager implements LeagueManager {
         return maxPosition;
     }
 
-public void printMatchCalendar(){
-    //let's sort it first
+    public void doEnd(){
+        for(String s: myStuff)
+            System.out.println(s);
 
-    for (int j = 0; j < matchCalendar.size(); j++)
-    for(int i=0;i<matchCalendar.size();i++){
-   //todo try and order them by date first
+        for(calendar t: myCal)
 
-        System.out.println("\n" + matchCalendar.get(i).getDate() + ": " + matchCalendar.get(i).getStats());
+            System.out.println(t.getDate()[0] + " " + t.getDate()[1] + " " + t.getDate()[2] + " " + t.getMatch());
     }
-//todo neeeeeeed loooots of thinking about this !!!!!
-}
+
 
 }
