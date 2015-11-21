@@ -24,20 +24,23 @@ class PremierLeagueManager implements LeagueManager {
     ArrayList<calendar> myCal = new ArrayList<calendar>();
 
     public void CreateClub(String name) {
+
+        //todo validate if there is another club with the same name
+
         MyClub = new FotballClub(name);
         stats.add(MyClub);
 
-//        if(stats.size()>1) //hide the first line -- table header
-//        System.out.println(ANSI_PURPLE + name + " -- football club created." + ANSI_RESET);
+        if (stats.size() > 1) //hide the first line -- table header
+            System.out.println("\n" + ANSI_PURPLE + name + " -- football club created." + ANSI_RESET);
     }
 
     public void DeleteClub(String name) {
         //making sure no one can delete the first line
         // making sure the club name is valid
         if (find(name) != 0 && find(name) != -1) {
-            System.out.println("\n" + ANSI_GREEN + name + " - was deleted " + ANSI_RESET + "\n");
+            System.out.println("\n" + ANSI_GREEN + name + " - was deleted " + ANSI_RESET);
             stats.remove(find(name));
-        } else System.out.println("\n" + ANSI_RED + name + " - is not a valid name " + ANSI_RESET + "\n");
+        } else System.out.println("\n" + ANSI_RED + name + " - is not a valid name " + ANSI_RESET);
     }
 
     public void stats(int which) {
@@ -60,18 +63,18 @@ class PremierLeagueManager implements LeagueManager {
                 stats.get(i).statistics(biggestField);
     }
 
-    public void calendar(calendar mytest) {
+    public void calendar(calendar mytest) {//todo validate this
 
-        int year = mytest.getYear();
+        int selectedYear = mytest.getYear();
         int selectedDay = mytest.getDay();
-        int month = -1; // months 0-11 --> Jan-Dec
+        int selectedMonth = -1; // months 0-11 --> Jan-Dec
 
-        for(int a=0;a<MONTHS.length;a++){
-            if(mytest.getMonth().equals(MONTHS[a])) month = a; //getting the month's position in our array on months
+        for (int a = 0; a < MONTHS.length; a++) {
+            if (mytest.getMonth().equals(MONTHS[a])) selectedMonth = a; //getting the month's position in our array on months
         }
 
-        System.out.println(month);
-        if(month == -1) {
+        System.out.println(selectedMonth);
+        if (selectedMonth == -1) {
             System.out.println(ANSI_RED + " >>> Please enter a valid month format." + ANSI_RESET);
         } else {
 
@@ -80,9 +83,9 @@ class PremierLeagueManager implements LeagueManager {
 
             int dayOfWeek, i;
 
-            if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) MONTHS_LENGTH[1] = 29; //is it leap year?
+            if ((selectedYear % 4 == 0) && (selectedYear % 100 != 0) || (selectedYear % 400 == 0)) MONTHS_LENGTH[1] = 29; //is it leap year?
 
-            Calendar myCalendar = new GregorianCalendar(year, month, 1); // create a calendar entry on the 1st of our monts & year
+            Calendar myCalendar = new GregorianCalendar(selectedYear, selectedMonth, 1); // create a calendar entry on the 1st of our monts & year
 
             dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK); //find the name of that day -- will return 1 for Sunday
 
@@ -90,7 +93,7 @@ class PremierLeagueManager implements LeagueManager {
             System.out.println("Use of colours:\n  >> Past day - " + ANSI_BLUE + "blue" + ANSI_RESET + "\n  >> Future day - " + ANSI_PURPLE + "purple" + ANSI_RESET + " \n");
 
             //printing the selected month and year
-            System.out.println("    " + MONTHS[month] + "  " + year);
+            System.out.println("    " + MONTHS[selectedMonth] + "  " + selectedYear);
 
             //printing head of calendar
             for (i = 0; i < DAYS.length; i++)
@@ -109,8 +112,8 @@ class PremierLeagueManager implements LeagueManager {
 //        System.out.println( "\n" + thisDay + "-" + months[thisMonth] + "-" + thisYear);
 
             //start printing days of the month
-            for (i = 0; i < MONTHS_LENGTH[month]; i++) { //I used that 9 - to addi an extra space for digits less than 10
-                if ((year < thisYear) || (year == thisYear && month < thisMonth) || (year == thisYear && month == thisMonth && i < thisDay))
+            for (i = 0; i < MONTHS_LENGTH[selectedMonth]; i++) { //I used that 9 - to addi an extra space for digits less than 10
+                if ((selectedYear < thisYear) || (selectedYear == thisYear && selectedMonth < thisMonth) || (selectedYear == thisYear && selectedMonth == thisMonth && i < thisDay))
                     colour = ANSI_BLUE; //past day
                 else colour = ANSI_PURPLE; //future day
 
@@ -121,20 +124,26 @@ class PremierLeagueManager implements LeagueManager {
             }
 
             System.out.println();
+            boolean found = false;
+            int testMonth = -1;
 
 
-//        for (i = 0; i < matchCalendar.size(); i++)
-//            if (matchCalendar.get(i).getDate().equals(Integer.toString(selectedDay) + " " + MONTHS[month] + " " + Integer.toString(year)))
-//                System.out.println("\n" + matchCalendar.get(i).getDate() + ": " + matchCalendar.get(i).getStats());
-            //todo change this to a general structure
-            //todo see if it should be good to colour every date that has matches instead of a random table like that.
-            //todo or maybe green the matches somehow.
 
+            for (calendar t : myCal) {
 
-            for (calendar t : myCal)
-                if (t.getDay() == selectedDay)
-                    System.out.println(t.getDate() + " >>> " + t.getMatch());
+                for (int a = 0; a < MONTHS.length; a++) {
+                    if (t.getMonth().equals(MONTHS[a])) testMonth = a; //getting the month's position in our array on months
+                }
+
+                if (t.getDay() == selectedDay && testMonth == selectedMonth && t.getYear() == selectedYear) {
+                    validMessage(t.getDate() + " >>> " + t.getMatch());
+                    found = true;
+                }
+            }
+
+            if (found == false) invalidMessage(" >>> No matches played today:" + mytest.getDate());
         }
+
     }
 
     public int find(String name) {
@@ -145,38 +154,67 @@ class PremierLeagueManager implements LeagueManager {
         return -1;
     }
 
-    public void addMatch(String homeClub, String awayClub, String date) {
+    public void addMatch(String homeClub, String awayClub, calendar date) {
 
-        //todo validate the date
+        try {
+            //validate the date
+            if (date.getYear() > 0 && Integer.toString(date.getYear()).length() < 5) ;
+                // positive year but with maximum 4 digits
+            else throw new NullPointerException();
 
-        int home = find(homeClub);
-        int away = find(awayClub);
+            int monthPos = -1;
+            for (int a = 0; a < MONTHS.length; a++)
+                if (date.getMonth().equals(MONTHS[a])) monthPos = a;
+            //the month exists in the MONTHS array
 
-        //todo add here past vs future validation
-        if(Integer.parseInt(date.substring(0,date.indexOf("-")))<19) {
-            calendar newMatch = new calendar(homeClub + " - " + awayClub, date);
-            myCal.add(newMatch);
-        }
+            if (monthPos == -1) throw new NullPointerException();
+                //found no month as the one from the user
+            else if (date.getDay() > 0 && date.getDay() <= MONTHS_LENGTH[monthPos]) ;
+                //the day is between boundaries - positive but not bigger than the maximum number possible
+            else if (monthPos == 1) { // might be february and a leap year
+                if ((date.getYear() % 4 == 0) && (date.getYear() % 100 != 0) || (date.getYear() % 400 == 0))
+                    if (date.getDay() > 0 && date.getDay() <= 29) ;
+            } else throw new NullPointerException();
 
-        else {
+            //get the present date
+            Calendar myCalendar = new GregorianCalendar();
+            int thisYear = myCalendar.getInstance().get(myCalendar.YEAR);
+            int thisMonth = myCalendar.getInstance().get(myCalendar.MONTH);
+            int thisDay = myCalendar.getInstance().get(myCalendar.DAY_OF_MONTH);
+            myCalendar.clear();
 
-            int randomHome = (int) Math.floor(4 * Math.random());
-            int randomAway = (int) Math.floor(3 * Math.random());
+            int home = find(homeClub);
+            int away = find(awayClub);
 
-            if (randomHome >= randomAway) {
-                addStats(home, away, randomHome, randomAway);
+            String dateOfMatch = date.getDay() + "-" + MONTHS[monthPos] + "-" + date.getYear();
+
+            //if it's future
+            if ((date.getYear() > thisYear) || (date.getYear() == thisYear && monthPos > thisMonth) || (date.getYear() == thisYear && monthPos == thisMonth && date.getDay() > thisDay)) {//add a future match to the calendar
+                calendar newMatch = new calendar(homeClub + " - " + awayClub, dateOfMatch);
+                myCal.add(newMatch);
             } else {
-                addStats(away, home, randomAway, randomHome);
+                int randomHome = (int) Math.floor(4 * Math.random());
+                int randomAway = (int) Math.floor(3 * Math.random());
+
+                if (randomHome >= randomAway) {
+                    addStats(home, away, randomHome, randomAway);
+                } else {
+                    addStats(away, home, randomAway, randomHome);
+                }
+
+                validMessage(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
+
+                calendar newMatch = new calendar(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub, dateOfMatch);
+                myCal.add(newMatch);
             }
 
-//        System.out.println(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
+            //sort the teams by points and goals scored
+            doSort();
 
-            calendar newMatch = new calendar(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub, date);
-            myCal.add(newMatch);
+        } catch (NullPointerException a) {
+            invalidMessage(" >>> The date was not valid.");
         }
 
-        //sort the teams by points and goals scored
-        doSort();
     }
 
     public void addStats(int win, int lose, int scoreWin, int scoreLose) {
@@ -204,26 +242,44 @@ class PremierLeagueManager implements LeagueManager {
 
     public void doMatches() {
 
-        //todo need to add the present day
-
+        //get the present date
+        Calendar myCalendar = new GregorianCalendar();
+        int thisYear = myCalendar.getInstance().get(myCalendar.YEAR);
+        int thisMonth = myCalendar.getInstance().get(myCalendar.MONTH);
+        int thisDay = myCalendar.getInstance().get(myCalendar.DAY_OF_MONTH);
+        myCalendar.clear();
 
         // every team plays with every team twice
         for (int i = 1; i < stats.size(); i++)
             for (int j = 1; j < stats.size(); j++) {
-                if (i != j) addMatch(stats.get(i).getName(), stats.get(j).getName(), Integer.toString(j)+"-November-2015");
+                if (i != j) {
+                    String dateOfMatch = thisDay + "-" + MONTHS[thisMonth] + "-" + thisYear;
+                    calendar matchDate = new calendar(dateOfMatch);
+                    addMatch(stats.get(i).getName(), stats.get(j).getName(), matchDate);
+
+                    System.out.println(matchDate.getDate());
+
+                    if (thisDay > 1) thisDay--;
+                    else if (thisMonth > 0) //because 0 means January
+                    {
+                        thisMonth--;
+                        if ((thisMonth == 1) && ((thisYear % 4 == 0) && (thisYear % 100 != 0) || (thisYear % 400 == 0))) // february and leap year
+                            thisDay = 29;
+                        else
+                            thisDay = MONTHS_LENGTH[thisMonth];
+                    } else {
+                        thisYear--;
+                        thisMonth = MONTHS.length - 1; //11 - December
+                        thisDay = MONTHS_LENGTH[thisMonth];
+                    }
                 }
+            }
 
     }
 
     public void doSort() {
 
         int statsSorting = 1, highestPosition, aux;
-
-//        this is for testing purposes ONLY
-//        for(int j=1;j<stats.size();j++) {
-//            stats.get(j).setPoints(10);
-//            stats.get(j).setGoalsScored(j);
-//        }
 
         if (Integer.parseInt(stats.get(highestPoints(statsSorting)).getPoints()) != 0) {
 
@@ -276,12 +332,28 @@ class PremierLeagueManager implements LeagueManager {
         return maxPosition;
     }
 
-    public void doEnd(){
-        //printing your calendar selection -- right now printing everything, //todo add selected day + move this to calendar
-        for(calendar t: myCal)
-        if(t.getDay()==13)
-            System.out.println(t.getDate() + " >>> " + t.getMatch());
+    public String getNames() {
+        //I created this method to show the user a list of already created clubs
+        String names = "\n   List of clubs: ";
 
+        //the user might call this method before creating any clubs
+        if (stats.size() == 1) names = names + "None created.";
+        //size 1 -- because the first line will have the head of Premier League table
+
+        for (int i = 1; i < stats.size(); i++) {
+            names = names + stats.get(i).getName();
+            if (i < stats.size() - 1) names = names + ", ";
+            //add commas after each listed club name, except the last one
+        }
+        return names;
+    }
+
+    public void validMessage(String message) {
+        System.out.println("\n" + ANSI_GREEN + message + ANSI_RESET);
+    }
+
+    public void invalidMessage(String message) {
+        System.out.println("\n" + ANSI_RED + message + ANSI_RESET);
     }
 
 
