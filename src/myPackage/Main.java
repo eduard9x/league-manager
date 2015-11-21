@@ -10,31 +10,6 @@ public class Main {
         // this will create the head of Premier League table
         MyLeague.CreateClub("Name");
 
-        //todo test everything with no clubs added
-
-//        MyLeague.stats(-1);
-//        MyLeague.calendar();
-//        MyLeague.DeleteClub("Real Madrid");
-
-//        MyLeague.doMatches();
-//        System.out.println();
-
-//        MyLeague.doSort();
-//        MyLeague.stats(-1); //-1 for showing all the premier league
-
-//        MyLeague.calendar();
-
-//        MyLeague.stats(MyLeague.find("Liverpool"));
-
-//        MyLeague.addMatch("Liverpool","Chelsea", "13-November-2015");
-//        MyLeague.addMatch("Real Madrid","Arsenal", "14-November-2015");
-
-//        MyLeague.doSort();
-//        MyLeague.stats(-1);
-        //todo create menu
-//        MyLeague.doEnd();
-//        MyLeague.calendar();
-
         final int ALL = -1; //-1 is for showing all the premier league table
         String clubName, myName;
         String myOption = "Hello, ";
@@ -51,7 +26,6 @@ public class Main {
             myName = "friendly user";
             MyLeague.validMessage(myOption + myName);
         }
-
 
         try {
             while (!myOption.equalsIgnoreCase("q")) {
@@ -104,7 +78,7 @@ public class Main {
                     //Display various statistics for a club.
                     if (MyLeague.stats.size() > 1) {
                         //display team names in order to know a club name.
-                        System.out.println(MyLeague.getNames());
+                        System.out.println(MyLeague.getNames()+"\n");
 
                         clubName = JOptionPane.showInputDialog("Please enter the club name to display various statistics:");
 
@@ -161,17 +135,29 @@ public class Main {
 
                     MyLeague.calendar(myDate);
                 } else if (myOption.equalsIgnoreCase("g")) {
+                    //this will create clubs to play with
                     MyLeague.CreateClub("Liverpool");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("United Kingdom");
                     MyLeague.CreateClub("Chelsea");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("United Kingdom");
                     MyLeague.CreateClub("Arsenal");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("United Kingdom");
                     MyLeague.CreateClub("Everton");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("United Kingdom");
                     MyLeague.CreateClub("Manchester City");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("United Kingdom");
                     MyLeague.CreateClub("West Ham");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("United Kingdom");
                     MyLeague.CreateClub("Juventus");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("Italy");
                     MyLeague.CreateClub("Real Madrid");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("Spain");
                     MyLeague.CreateClub("Barcelona");
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("Spain");
                     MyLeague.CreateClub("Sevilla");
-                } else if (myOption.equalsIgnoreCase("h")) {//todo ask to add the matches first
+                    MyLeague.stats.get(MyLeague.find("Liverpool")).setLocation("Spain");
+                } else if (myOption.equalsIgnoreCase("h")) {
+                    //This will create matches in the past and in the future
                     MyLeague.doMatches();
                 } else throw new NullPointerException();
             }
@@ -180,4 +166,5 @@ public class Main {
             MyLeague.validMessage(" Have a nice day, " + myName + ".");
         }
     }
+    
 }

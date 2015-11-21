@@ -4,24 +4,24 @@ import java.util.*;
 
 class PremierLeagueManager implements LeagueManager {
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String COLOUR_RESET = "\u001B[0m";
+    public static final String COLOUR_RED = "\u001B[31m";
+    public static final String COLOUR_GREEN = "\u001B[32m";
+    public static final String COLOUR_BLUE = "\u001B[34m";
+    public static final String COLOUR_PURPLE = "\u001B[35m";
 
     public static final String DAYS[] = {"Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"};
     public static final String MONTHS[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     public static final int[] MONTHS_LENGTH = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    ArrayList<FotballClub> stats = new ArrayList<FotballClub>();
-    FotballClub MyClub;
+    ArrayList<FootballClub> stats = new ArrayList<FootballClub>();
+    FootballClub MyClub;
 
     ArrayList<calendar> myCal = new ArrayList<calendar>();
 
     public void CreateClub(String name) {
-
-        MyClub = new FotballClub(name);
+        //creating a new club and adding it to the list
+        MyClub = new FootballClub(name);
         stats.add(MyClub);
 
         if (stats.size() > 1) //hide the first line -- table header
@@ -39,12 +39,11 @@ class PremierLeagueManager implements LeagueManager {
     }
 
     public void stats(int which) {
-//The full display of Premier League table is good, however when you display 1 line, it might have too much space in the Name field
-
-//        stats.get(1).variousStatistics();
+        //getting the biggest lenght of each field, so that the table will be responsive, no matter how big will be any of the values
 
         int i;
         int[] biggestField = {stats.get(0).getName().length(), stats.get(0).getMatchesPlayed().length(), stats.get(0).getWins().length(), stats.get(0).getDraws().length(), stats.get(0).getDefeats().length(), stats.get(0).getGoalsReceived().length(), stats.get(0).getGoalsScored().length(), stats.get(0).getPoints().length()};
+        //initialising with the first lenght of each column
 
         for (i = 1; i < stats.size(); i++)
             for (int j = 0; j < biggestField.length; j++) {
@@ -90,21 +89,21 @@ class PremierLeagueManager implements LeagueManager {
             }
 
             if (selectedMonth == -1) {
-                System.out.println(ANSI_RED + " >>> Please enter a valid month format." + ANSI_RESET);
+                System.out.println(COLOUR_RED + " >>> Please enter a valid month format." + COLOUR_RESET);
             } else {
 
-                String colour = ANSI_PURPLE;
+                String colour;
                 int dayOfWeek, i;
 
                 if ((selectedYear % 4 == 0) && (selectedYear % 100 != 0) || (selectedYear % 400 == 0))
                     MONTHS_LENGTH[1] = 29; //is it leap year?
 
-                Calendar myCalendar = new GregorianCalendar(selectedYear, selectedMonth, 1); // create a calendar entry on the 1st of our monts & year
+                Calendar myCalendar = new GregorianCalendar(selectedYear, selectedMonth, 1); // create a calendar entry on the 1st of our months & year
 
                 dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK); //find the name of that day -- will return 1 for Sunday
 
                 //the use of colours
-                System.out.println("\nUse of colours:\n  >> Past day - " + ANSI_BLUE + "blue" + ANSI_RESET + "\n  >> Future day - " + ANSI_PURPLE + "purple" + ANSI_RESET + " \n");
+                System.out.println("\nUse of colours:\n  >> Past day - " + COLOUR_BLUE + "blue" + COLOUR_RESET + "\n  >> Future day - " + COLOUR_PURPLE + "purple" + COLOUR_RESET + " \n");
 
                 //printing the selected month and year
                 System.out.println("    " + MONTHS[selectedMonth] + "  " + selectedYear);
@@ -127,12 +126,12 @@ class PremierLeagueManager implements LeagueManager {
                 //start printing days of the month
                 for (i = 0; i < MONTHS_LENGTH[selectedMonth]; i++) { //I used that 9 - to addi an extra space for digits less than 10
                     if ((selectedYear < thisYear) || (selectedYear == thisYear && selectedMonth < thisMonth) || (selectedYear == thisYear && selectedMonth == thisMonth && i < thisDay))
-                        colour = ANSI_BLUE; //past day
-                    else colour = ANSI_PURPLE; //future day
+                        colour = COLOUR_BLUE; //past day
+                    else colour = COLOUR_PURPLE; //future day
 
                     if (i < 9)
-                        System.out.print(colour + (i + 1) + "   " + ANSI_RESET); //will have blue colour for past and red for future
-                    else System.out.print(colour + (i + 1) + "  " + ANSI_RESET);
+                        System.out.print(colour + (i + 1) + "   " + COLOUR_RESET); //will have blue colour for past and red for future
+                    else System.out.print(colour + (i + 1) + "  " + COLOUR_RESET);
                     if ((i + dayOfWeek) % 7 == 0) System.out.println();
                 }
 
@@ -141,8 +140,8 @@ class PremierLeagueManager implements LeagueManager {
                 int testMonth = -1;
 
                 if ((selectedYear < thisYear) || (selectedYear == thisYear && selectedMonth < thisMonth) || (selectedYear == thisYear && selectedMonth == thisMonth && i < thisDay))
-                    colour = ANSI_BLUE; //past day
-                else colour = ANSI_PURPLE; //future day
+                    colour = COLOUR_BLUE; //past day
+                else colour = COLOUR_PURPLE; //future day
 
                 for (calendar t : myCal) {
 
@@ -152,7 +151,7 @@ class PremierLeagueManager implements LeagueManager {
                     }
 
                     if (t.getDay() == selectedDay && testMonth == selectedMonth && t.getYear() == selectedYear) {
-                        System.out.println("\n" + colour + t.getDate() + " >>> " + t.getMatch() + ANSI_RESET);
+                        System.out.println("\n" + colour + t.getDate() + " >>> " + t.getMatch() + COLOUR_RESET);
                         found = true;
                     }
                 }
@@ -162,7 +161,6 @@ class PremierLeagueManager implements LeagueManager {
         } catch (NullPointerException a) {
             invalidMessage(" >>> The date was not valid.");
         }
-
 
     }
 
@@ -381,7 +379,7 @@ class PremierLeagueManager implements LeagueManager {
 
         for (int i = aux; i < stats.size(); i++) {
             for (int j = i; j < stats.size(); j++) {
-                if (stats.size() > j) {//todo this seems pointless - please check
+                if (stats.size() > j) {
                     if (Integer.parseInt(stats.get(j).getPoints()) > maxPoints) {
                         maxPosition = j;
                         maxPoints = Integer.parseInt(stats.get(j).getPoints());
@@ -409,11 +407,11 @@ class PremierLeagueManager implements LeagueManager {
     }
 
     public void validMessage(String message) {
-        System.out.println("\n" + ANSI_GREEN + message + ANSI_RESET);
+        System.out.println("\n" + COLOUR_GREEN + message + COLOUR_RESET);
     }
 
     public void invalidMessage(String message) {
-        System.out.println("\n" + ANSI_RED + message + ANSI_RESET);
+        System.out.println("\n" + COLOUR_RED + message + COLOUR_RESET);
     }
 
 
