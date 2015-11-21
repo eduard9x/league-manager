@@ -21,7 +21,6 @@ class PremierLeagueManager implements LeagueManager {
     ArrayList<FotballClub> stats = new ArrayList<FotballClub>();
     FotballClub MyClub;
 
-    ArrayList<String> myStuff = new ArrayList<String>();
     ArrayList<calendar> myCal = new ArrayList<calendar>();
 
     public void CreateClub(String name) {
@@ -61,62 +60,81 @@ class PremierLeagueManager implements LeagueManager {
                 stats.get(i).statistics(biggestField);
     }
 
-    public void calendar() {
+    public void calendar(calendar mytest) {
 
-        int year = 2015;
-        int month = 10; // months 0-11 --> Jan-Dec
-        int selectedDay = 13;
-        String colour;
-        //todo add validation to this and to whatever else you input from keyboard
+        int year = mytest.getYear();
+        int selectedDay = mytest.getDay();
+        int month = -1; // months 0-11 --> Jan-Dec
 
-        int dayOfWeek, i;
+        for(int a=0;a<MONTHS.length;a++){
+            if(mytest.getMonth().equals(MONTHS[a])) month = a; //getting the month's position in our array on months
+        }
 
-        if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) MONTHS_LENGTH[1] = 29; //is it leap year?
+        System.out.println(month);
+        if(month == -1) {
+            System.out.println(ANSI_RED + " >>> Please enter a valid month format." + ANSI_RESET);
+        } else {
 
-        Calendar myCalendar = new GregorianCalendar(year, month, 1); // create a calendar entry on the 1st of our monts & year
+            String colour;
+            //todo add validation to this and to whatever else you input from keyboard
 
-        dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK); //find the name of that day -- will return 1 for Sunday
+            int dayOfWeek, i;
 
-        //the use of colours
-        System.out.println("Use of colours:\n  >> Past day - " + ANSI_BLUE + "blue" + ANSI_RESET + "\n  >> Future day - " + ANSI_PURPLE + "purple" + ANSI_RESET + " \n");
+            if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)) MONTHS_LENGTH[1] = 29; //is it leap year?
 
-        //printing the selected month and year
-        System.out.println("    " + MONTHS[month] + "  " + year);
+            Calendar myCalendar = new GregorianCalendar(year, month, 1); // create a calendar entry on the 1st of our monts & year
 
-        //printing head of calendar
-        for (i = 0; i < DAYS.length; i++)
-            System.out.print(DAYS[i] + "  ");
-        System.out.println();
+            dayOfWeek = myCalendar.get(Calendar.DAY_OF_WEEK); //find the name of that day -- will return 1 for Sunday
 
-        //getting before the day our month is starting
-        for (i = 1; i < dayOfWeek; i++)
-            System.out.print("    ");
+            //the use of colours
+            System.out.println("Use of colours:\n  >> Past day - " + ANSI_BLUE + "blue" + ANSI_RESET + "\n  >> Future day - " + ANSI_PURPLE + "purple" + ANSI_RESET + " \n");
 
-        //get the present date
-        myCalendar.clear();
-        int thisYear = myCalendar.getInstance().get(myCalendar.YEAR);
-        int thisMonth = myCalendar.getInstance().get(myCalendar.MONTH);
-        int thisDay = myCalendar.getInstance().get(myCalendar.DAY_OF_MONTH);
+            //printing the selected month and year
+            System.out.println("    " + MONTHS[month] + "  " + year);
+
+            //printing head of calendar
+            for (i = 0; i < DAYS.length; i++)
+                System.out.print(DAYS[i] + "  ");
+            System.out.println();
+
+            //getting before the day our month is starting
+            for (i = 1; i < dayOfWeek; i++)
+                System.out.print("    ");
+
+            //get the present date
+            myCalendar.clear();
+            int thisYear = myCalendar.getInstance().get(myCalendar.YEAR);
+            int thisMonth = myCalendar.getInstance().get(myCalendar.MONTH);
+            int thisDay = myCalendar.getInstance().get(myCalendar.DAY_OF_MONTH);
 //        System.out.println( "\n" + thisDay + "-" + months[thisMonth] + "-" + thisYear);
 
-        //start printing days of the month
-        for (i = 0; i < MONTHS_LENGTH[month]; i++) { //I used that 9 - to addi an extra space for digits less than 10
-            if ((year < thisYear) || (year == thisYear && month < thisMonth) || (year == thisYear && month == thisMonth && i < thisDay))
-                colour = ANSI_BLUE; //past day
-            else colour = ANSI_PURPLE; //future day
+            //start printing days of the month
+            for (i = 0; i < MONTHS_LENGTH[month]; i++) { //I used that 9 - to addi an extra space for digits less than 10
+                if ((year < thisYear) || (year == thisYear && month < thisMonth) || (year == thisYear && month == thisMonth && i < thisDay))
+                    colour = ANSI_BLUE; //past day
+                else colour = ANSI_PURPLE; //future day
 
-            if (i < 9)
-                System.out.print(colour + (i + 1) + "   " + ANSI_RESET); //will have blue colour for past and red for future
-            else System.out.print(colour + (i + 1) + "  " + ANSI_RESET);
-            if ((i + dayOfWeek) % 7 == 0) System.out.println();
-        }
+                if (i < 9)
+                    System.out.print(colour + (i + 1) + "   " + ANSI_RESET); //will have blue colour for past and red for future
+                else System.out.print(colour + (i + 1) + "  " + ANSI_RESET);
+                if ((i + dayOfWeek) % 7 == 0) System.out.println();
+            }
+
+            System.out.println();
+
 
 //        for (i = 0; i < matchCalendar.size(); i++)
 //            if (matchCalendar.get(i).getDate().equals(Integer.toString(selectedDay) + " " + MONTHS[month] + " " + Integer.toString(year)))
 //                System.out.println("\n" + matchCalendar.get(i).getDate() + ": " + matchCalendar.get(i).getStats());
-        //todo change this to a general structure
-        //todo see if it should be good to colour every date that has matches instead of a random table like that.
-        //todo or maybe green the matches somehow.
+            //todo change this to a general structure
+            //todo see if it should be good to colour every date that has matches instead of a random table like that.
+            //todo or maybe green the matches somehow.
+
+
+            for (calendar t : myCal)
+                if (t.getDay() == selectedDay)
+                    System.out.println(t.getDate() + " >>> " + t.getMatch());
+        }
     }
 
     public int find(String name) {
@@ -127,26 +145,35 @@ class PremierLeagueManager implements LeagueManager {
         return -1;
     }
 
-    public void addMatch(String homeClub, String awayClub, String[] date) {
+    public void addMatch(String homeClub, String awayClub, String date) {
+
+        //todo validate the date
 
         int home = find(homeClub);
         int away = find(awayClub);
 
-        int randomHome = (int) Math.floor(4 * Math.random());
-        int randomAway = (int) Math.floor(3 * Math.random());
-
-        if (randomHome >= randomAway) {
-            addStats(home, away, randomHome, randomAway);
-        } else {
-            addStats(away, home, randomAway, randomHome);
+        //todo add here past vs future validation
+        if(Integer.parseInt(date.substring(0,date.indexOf("-")))<19) {
+            calendar newMatch = new calendar(homeClub + " - " + awayClub, date);
+            myCal.add(newMatch);
         }
 
+        else {
+
+            int randomHome = (int) Math.floor(4 * Math.random());
+            int randomAway = (int) Math.floor(3 * Math.random());
+
+            if (randomHome >= randomAway) {
+                addStats(home, away, randomHome, randomAway);
+            } else {
+                addStats(away, home, randomAway, randomHome);
+            }
+
 //        System.out.println(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
-        myStuff.add(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub);
 
-        calendar newMatch = new calendar(homeClub, date);
-        myCal.add(newMatch);
-
+            calendar newMatch = new calendar(homeClub + " " + randomHome + " - " + randomAway + " " + awayClub, date);
+            myCal.add(newMatch);
+        }
 
         //sort the teams by points and goals scored
         doSort();
@@ -177,13 +204,13 @@ class PremierLeagueManager implements LeagueManager {
 
     public void doMatches() {
 
+        //todo need to add the present day
 
 
         // every team plays with every team twice
         for (int i = 1; i < stats.size(); i++)
             for (int j = 1; j < stats.size(); j++) {
-                String[] date = {Integer.toString(j),"November","2015"};
-                if (i != j) addMatch(stats.get(i).getName(), stats.get(j).getName(), date);
+                if (i != j) addMatch(stats.get(i).getName(), stats.get(j).getName(), Integer.toString(j)+"-November-2015");
                 }
 
     }
@@ -250,12 +277,11 @@ class PremierLeagueManager implements LeagueManager {
     }
 
     public void doEnd(){
-        for(String s: myStuff)
-            System.out.println(s);
-
+        //printing your calendar selection -- right now printing everything, //todo add selected day + move this to calendar
         for(calendar t: myCal)
+        if(t.getDay()==13)
+            System.out.println(t.getDate() + " >>> " + t.getMatch());
 
-            System.out.println(t.getDate()[0] + " " + t.getDate()[1] + " " + t.getDate()[2] + " " + t.getMatch());
     }
 
 

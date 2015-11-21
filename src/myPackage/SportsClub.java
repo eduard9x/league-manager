@@ -21,7 +21,7 @@ abstract class SportsClub {
         System.out.println("Capital: " + this.getCapital());
         System.out.println("World Wide Position: " + this.getWorldWidePosition());
         System.out.println();
-    }
+    } //todo add more into various statistics
 
     public String getName() {
         return name;
