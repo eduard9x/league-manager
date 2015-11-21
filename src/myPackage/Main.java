@@ -63,7 +63,7 @@ public class Main {
                 System.out.println("Press E to -> Add a match between two clubs. ");
                 System.out.println("Press F to -> Display calendar. ");
                 System.out.println("Press G to -> Load the test clubs. ");
-                System.out.println("Press H to -> Load the test matches. ");
+                System.out.println("Press H to -> Load the test matches. After loading the test clubs. ");
                 System.out.println("Press Q to -> Quit. ");
 
                 myOption = JOptionPane.showInputDialog("Please enter your option:");
@@ -76,14 +76,18 @@ public class Main {
                     if (clubName == null || clubName.length() == 0)
                         MyLeague.invalidMessage(" >>> Please follow instructions carefully.");
                     else {
-                        //add location details
-                        String clubLocation = JOptionPane.showInputDialog("Please enter location for " + clubName + ":");
+                        if (MyLeague.find(clubName) != 0 && MyLeague.find(clubName) != -1) {
+                            MyLeague.invalidMessage(" >>> " + clubName + " - this club name has already been used.");
+                        } else {
+                            //add location details
+                            String clubLocation = JOptionPane.showInputDialog("Please enter location for " + clubName + ":");
 
-                        MyLeague.CreateClub(clubName);
-                        if (clubLocation == null || clubLocation.length() == 0) ; //leave the location as unknown
-                        else {
-                            //set the location
-                            MyLeague.stats.get(MyLeague.find(clubName)).setLocation(clubLocation);
+                            MyLeague.CreateClub(clubName);
+                            if (clubLocation == null || clubLocation.length() == 0) ; //leave the location as unknown
+                            else {
+                                //set the location
+                                MyLeague.stats.get(MyLeague.find(clubName)).setLocation(clubLocation);
+                            }
                         }
                     }
                 } else if (myOption.equalsIgnoreCase("b")) {
@@ -147,8 +151,8 @@ public class Main {
                         }
                     }
                 } else if (myOption.equalsIgnoreCase("f")) {
-                    int year = Integer.parseInt(JOptionPane.showInputDialog("Please enter the year of the match:"));
-                    String month = JOptionPane.showInputDialog("Please enter the month using the following format 'November','March', etc :");
+                    int year = Integer.parseInt(JOptionPane.showInputDialog("Please enter the year of the calendar:"));
+                    String month = JOptionPane.showInputDialog("Please enter the month as March, June, November, etc :");
                     int day = Integer.parseInt(JOptionPane.showInputDialog("Please enter the day of the match:"));
                     String date = day + "-" + month + "-" + year;
 
@@ -167,11 +171,9 @@ public class Main {
                     MyLeague.CreateClub("Real Madrid");
                     MyLeague.CreateClub("Barcelona");
                     MyLeague.CreateClub("Sevilla");
-                } else if (myOption.equalsIgnoreCase("h")) {
+                } else if (myOption.equalsIgnoreCase("h")) {//todo ask to add the matches first
                     MyLeague.doMatches();
                 } else throw new NullPointerException();
-
-
             }
 
         } catch (NullPointerException a) {

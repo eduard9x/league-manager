@@ -4,7 +4,7 @@ abstract class SportsClub {
 
     public abstract void statistics( int[] biggestField);
 
-    private String name, location,awards;
+    private String name, location;
 
     public SportsClub(String name) {
         this.name = name;

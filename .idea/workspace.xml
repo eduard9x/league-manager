@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a3417ed-7b91-4be9-b327-d07c293bb15d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/league-manager/myPackage/Main.class" afterPath="$PROJECT_DIR$/out/production/league-manager/myPackage/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/league-manager/myPackage/PremierLeagueManager.class" afterPath="$PROJECT_DIR$/out/production/league-manager/myPackage/PremierLeagueManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myPackage/Main.java" afterPath="$PROJECT_DIR$/src/myPackage/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myPackage/PremierLeagueManager.java" afterPath="$PROJECT_DIR$/src/myPackage/PremierLeagueManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/myPackage/SportsClub.java" afterPath="$PROJECT_DIR$/src/myPackage/SportsClub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="league-manager.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/myPackage/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="133" column="70" selection-start-line="133" selection-start-column="70" selection-end-line="133" selection-end-column="70" />
+              <caret line="65" column="102" selection-start-line="65" selection-start-column="102" selection-end-line="65" selection-end-column="102" />
               <folding />
             </state>
           </provider>
@@ -56,20 +53,18 @@
       <file leaf-file-name="PremierLeagueManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/myPackage/PremierLeagueManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3079179">
-              <caret line="65" column="63" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
+            <state vertical-scroll-proportion="-0.8914956">
+              <caret line="117" column="47" selection-start-line="117" selection-start-column="47" selection-end-line="117" selection-end-column="47" />
               <folding>
-                <element signature="e#1011#1024#0" expanded="true" />
-                <element signature="e#1098#1108#0" expanded="true" />
+                <element signature="e#779#792#0" expanded="true" />
+                <element signature="e#866#876#0" expanded="true" />
+                <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
                 <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
                 <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
                 <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-                <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
                 <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-                <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
                 <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
                 <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-                <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -99,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/src/myPackage/SportsClub.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -550,11 +545,12 @@
       <workItem from="1448055149843" duration="1219000" />
       <workItem from="1448103520529" duration="12460000" />
       <workItem from="1448121074000" duration="13543000" />
+      <workItem from="1448136926689" duration="5639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122588000" />
+    <option name="totallyTimeSpent" value="128227000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -586,7 +582,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48246846" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48246846" sideWeight="0.49427754" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -612,13 +608,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33006993" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914925" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32867134" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -634,7 +630,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="22" />
+      <option name="time" value="24" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -680,17 +676,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -732,17 +726,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -784,17 +776,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -836,17 +826,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -888,17 +876,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -940,17 +926,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -992,17 +976,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1044,17 +1026,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1104,14 +1084,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myPackage/SportsClub.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/myPackage/FootballClub.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1120,10 +1092,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myPackage/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/myPackage/SportsClub.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="70" selection-start-line="133" selection-start-column="70" selection-end-line="133" selection-end-column="70" />
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -1139,22 +1111,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/myPackage/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="102" selection-start-line="65" selection-start-column="102" selection-end-line="65" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/myPackage/PremierLeagueManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3079179">
-          <caret line="65" column="63" selection-start-line="65" selection-start-column="63" selection-end-line="65" selection-end-column="63" />
+        <state vertical-scroll-proportion="-0.8914956">
+          <caret line="117" column="47" selection-start-line="117" selection-start-column="47" selection-end-line="117" selection-end-column="47" />
           <folding>
-            <element signature="e#1011#1024#0" expanded="true" />
-            <element signature="e#1098#1108#0" expanded="true" />
+            <element signature="e#779#792#0" expanded="true" />
+            <element signature="e#866#876#0" expanded="true" />
+            <element signature="method#CreateClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#DeleteClub#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#stats#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#find#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#addMatch#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#addStats#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#doMatches#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#doSort#0;class#PremierLeagueManager#0" expanded="false" />
             <element signature="method#highestPoints#0;class#PremierLeagueManager#0" expanded="false" />
-            <element signature="method#getNames#0;class#PremierLeagueManager#0" expanded="false" />
           </folding>
         </state>
       </provider>
